@@ -38,7 +38,7 @@
     @foreach (var item in Model)
     {
         <div class="col-md-3">
-            <a href="@Url.Action("Index", "Home", new { keyword = item.Pro_Name })">
+            <a href="@Url.Action("Create", "Home", new { id = item.Pro_Id })">
                 <div class="card" style="width:20rem;margin:20px 0 24px 0">
                     <img src="~/image/@Html.DisplayFor(modelItem => item.Pro_Picture)"
                          alt="company logo"
