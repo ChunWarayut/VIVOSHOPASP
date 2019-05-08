@@ -132,6 +132,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\UserAccoutsController.cs" />
     <Compile Include="Models\Bank.cs">
       <DependentUpon>vivoshopModel.tt</DependentUpon>
@@ -253,6 +254,11 @@
     <Content Include="Views\Products\Index.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\Accout.cshtml" />
+    <Content Include="Views\Report\Product.cshtml" />
+    <Content Include="Views\Report\ProductType.cshtml" />
+    <Content Include="Views\Report\Sale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

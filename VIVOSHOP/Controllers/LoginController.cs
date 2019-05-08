@@ -26,8 +26,11 @@ namespace VIVOSHOP.Controllers
             }
             else
             {
-                Session["userEmail"] = userDetail.User_Email;
-                Session["userID"] = userDetail.User_Id;
+                Session["User_Email"] = userDetail.User_Email;
+                Session["User_Id"] = userDetail.User_Id;
+                Session["User_Name"] = userDetail.User_Name;
+                Session["User_Lastname"] = userDetail.User_Lastname;
+                Session["User_Tel"] = userDetail.User_Tel; 
                 return RedirectToAction("Index","Home");
             }
         }
