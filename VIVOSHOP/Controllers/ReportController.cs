@@ -25,19 +25,19 @@ namespace VIVOSHOP.Controllers
         // GET: Report
         public ActionResult Product()
         {
-            return View();
+            return View(db.Products.ToList());
         }
         
         // GET: Report
         public ActionResult ProductType()
         {
-            return View();
+            return View(db.ProductTypes.ToList());
         }
         
         // GET: Report
         public ActionResult Sale()
-        {
-            return View();
+        { 
+            return View(db.ProductOrders.ToList());
         }
 
     }
