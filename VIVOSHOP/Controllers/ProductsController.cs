@@ -26,7 +26,7 @@ namespace VIVOSHOP.Controllers
             }
             else
             {
-                var c = products.Where(x => x.Pro_Name.Contains(keyword)).ToList();  
+                var c = products.Where(x => x.Pro_Name.Contains(keyword) || x.ProductType.ProType_Name.Contains(keyword)).ToList();  
                 return View(c);
             } 
         }

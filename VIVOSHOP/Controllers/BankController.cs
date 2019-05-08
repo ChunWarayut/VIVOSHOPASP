@@ -20,19 +20,9 @@ namespace VIVOSHOP.Controllers
                 return View(db.Banks.ToList());
             }
             else
-            {
-                var c = db.Banks.Where(x => x.Bank_Name.Contains(keyword)).ToList();
-                var b = db.Banks.Where(x => x.Bank_Number.Contains(keyword)).ToList();
-                var A = db.Banks.Where(x => x.Bank_Number.Contains("123456789")).ToList();
-                if (b.Count > 0)
-                {
-                    A = b;
-                }
-                if (c.Count > 0)
-                {
-                    A = c;
-                }
-                return View(A);
+            { 
+                var bankDB = db.Banks.Where(x => x.Bank_Number.Contains(keyword) || x.Bank_Name.Contains(keyword) || x.Bank_User.Contains(keyword)).ToList();  
+                return View(bankDB);
             } 
         }
 

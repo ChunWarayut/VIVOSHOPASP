@@ -22,18 +22,8 @@ namespace VIVOSHOP.Controllers
                 return View(db.UserAccouts.ToList());
             }
             else
-            { 
-                var c = db.UserAccouts.Where(x => x.User_Name.Contains(keyword)).ToList();
-                var b = db.UserAccouts.Where(x => x.User_Lastname.Contains(keyword)).ToList();
-                var A = db.UserAccouts.Where(x => x.User_Name.Contains("123456789")).ToList();
-                if (b.Count > 0)
-                {
-                    A = b;
-                }
-                if (c.Count > 0)
-                {
-                    A = c;
-                }
+            {  
+                var A = db.UserAccouts.Where(x => x.User_Name.Contains(keyword) || x.User_Lastname.Contains(keyword) || x.User_Sex.Contains(keyword) || x.User_Tel.Contains(keyword) || x.User_Email.Contains(keyword)).ToList(); 
                 return View(A);
             }
         }
