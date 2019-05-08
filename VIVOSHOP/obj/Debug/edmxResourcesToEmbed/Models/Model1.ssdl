@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Bank_Number" />
+    </Key>
+    <Property Name="Bank_Number" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Bank_Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Bank_User" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetails">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Pro_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="OrderDetails_Number" Type="int" Nullable="false" />
+    <Property Name="Pro_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Pro_Id" />
+    </Key>
+    <Property Name="Pro_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="ProType_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Pro_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Pro_Details" Type="ntext" Nullable="false" />
+    <Property Name="Pro_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="Pro_Color" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Pro_Picture" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="ProductOrder">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="User_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Order_Date" Type="datetime" Nullable="false" />
+    <Property Name="Order_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="Order_Picture" Type="nvarchar(max)" />
+    <Property Name="Order_Status" Type="nvarchar" MaxLength="3" Nullable="false" />
+    <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ProType_Id" />
+    </Key>
+    <Property Name="ProType_Id" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="ProType_Name" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="UserAccout">
+    <Key>
+      <PropertyRef Name="User_Id " />
+    </Key>
+    <Property Name="User_Id " Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="User_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="User_Lastname" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="User_Sex" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="User_Tel" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="User_Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="User_Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_OrderDetails_ToTable">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Pro_Id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="Pro_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_ToTable_1">
+    <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ProductOrder">
+        <PropertyRef Name="Order_Id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="Order_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ToTable">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="ProType_Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOrder_ToTable">
+    <End Role="UserAccout" Type="Self.UserAccout" Multiplicity="1" />
+    <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccout">
+        <PropertyRef Name="User_Id " />
+      </Principal>
+      <Dependent Role="ProductOrder">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductOrder" EntityType="Self.ProductOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductType" EntityType="Self.ProductType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccout" EntityType="Self.UserAccout" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_OrderDetails_ToTable" Association="Self.FK_OrderDetails_ToTable">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_ToTable_1" Association="Self.FK_OrderDetails_ToTable_1">
+      <End Role="ProductOrder" EntitySet="ProductOrder" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ToTable" Association="Self.FK_Product_ToTable">
+      <End Role="ProductType" EntitySet="ProductType" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOrder_ToTable" Association="Self.FK_ProductOrder_ToTable">
+      <End Role="UserAccout" EntitySet="UserAccout" />
+      <End Role="ProductOrder" EntitySet="ProductOrder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

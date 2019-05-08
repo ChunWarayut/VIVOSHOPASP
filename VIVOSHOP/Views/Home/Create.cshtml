@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+ 
+    <h2>Create</h2>
+    <ul>
+        @foreach (var Student in ViewBag.Modes)
+        {
+            <li>
+                @Student
+            </li>
+        }
+    </ul>
+    <input type="submit" id="Cart" name="submit" value="submit" />
+ 
