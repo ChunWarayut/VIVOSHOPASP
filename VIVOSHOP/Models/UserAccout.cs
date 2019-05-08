@@ -36,6 +36,7 @@ namespace VIVOSHOP.Models
         public string User_Address { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductOrder> ProductOrders { get; set; }
+        public virtual ICollection<ProductOrder> ProductOrders { get; set; } 
+        public string LoginErrorMessage { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<VIVOSHOP.Models.Product>
 @{
     ViewBag.Title = "Home Page";
+
 }
 
 <div class="jumbotron">
@@ -16,7 +17,7 @@
     <div class="col-md-8">
         <h2>VIVO SHOP CentralPlaza Nakhon Ratchasima</h2>
         <p>
-            ยินดีต้อนรับ
+            ยินดีต้อนรับ @Session["userEmail"]
         </p>
     </div>
     <div class="col-md-4">
