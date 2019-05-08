@@ -34,23 +34,30 @@
 </script>
 <DIV id="report">
     <center> VIVO SHOP </center>
-    <center> รายงานข้อมูลสินค้า </center>
+    <center> รายงานข้อมูลประเภทสินค้า </center>
     <center>  <p> ชั้น 2 เซนทรัลพลาซ่า นครราชสีมา ตำบลในเมือง อำเภอเมืองนครราชสีมา จังหวัดนครราชสีมา 30000   โทร. 044014230</p> </center>
     <p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
 
     <table class="table table-striped">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.ProType_Id)
+            </th>
+
+            <th>
                 @Html.DisplayNameFor(model => model.ProType_Name)
-            </th> 
+            </th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.ProType_Id)
+                </th>
                 <td>
                     @Html.DisplayFor(modelItem => item.ProType_Name)
-                </td> 
+                </td>
             </tr>
         }
 
