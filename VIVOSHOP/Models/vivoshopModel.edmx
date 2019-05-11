@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="vivoshopDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="vivoshopDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bank">
           <Key>
             <PropertyRef Name="Bank_Number" />
@@ -21,6 +21,7 @@
           <Property Name="Pro_Id" Type="int" Nullable="false" />
           <Property Name="OrderDetails_Number" Type="int" Nullable="false" />
           <Property Name="Pro_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="ProOrderId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -121,8 +122,7 @@
             <End Role="ProductOrder" EntitySet="ProductOrder" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="vivoshopDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -143,6 +143,7 @@
           <Property Name="OrderDetails_Number" Type="Int32" Nullable="false" />
           <Property Name="Pro_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_ToTable" FromRole="OrderDetails" ToRole="Product" />
+          <Property Name="ProOrderId" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -266,6 +267,7 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="vivoshopDBModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="ProOrderId" ColumnName="ProOrderId" />
                 <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
                 <ScalarProperty Name="Pro_Id" ColumnName="Pro_Id" />
                 <ScalarProperty Name="OrderDetails_Number" ColumnName="OrderDetails_Number" />

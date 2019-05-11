@@ -25,8 +25,10 @@ namespace VIVOSHOP.Controllers
 
         }
 
-        public ActionResult Create(string id)
-        {
+
+        // GET: Products/Edit/5
+        public ActionResult Create(int? id)
+        { 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,10 +38,14 @@ namespace VIVOSHOP.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ProType_Id = new SelectList(db.ProductTypes, "ProType_Id", "ProType_Name", product.ProType_Id);
+            ViewBag.id = id;
             return View(product);
         }
+
+
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Order_Id,Pro_Id,OrderDetails_Number,Pro_Price")]OrderDetail orderDetail)
+        public ActionResult Create([Bind(Include = "Order_Id,Pro_Id,OrderDetails_Number,Pro_Price,ProOrderId")]OrderDetail orderDetail)
         {
             if (ModelState.IsValid)
             {

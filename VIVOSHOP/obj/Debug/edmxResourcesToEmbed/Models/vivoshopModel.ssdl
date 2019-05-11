@@ -16,6 +16,7 @@
     <Property Name="Pro_Id" Type="int" Nullable="false" />
     <Property Name="OrderDetails_Number" Type="int" Nullable="false" />
     <Property Name="Pro_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="ProOrderId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>

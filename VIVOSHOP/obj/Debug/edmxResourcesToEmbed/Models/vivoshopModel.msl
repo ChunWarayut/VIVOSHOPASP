@@ -13,6 +13,7 @@
     <EntitySetMapping Name="OrderDetails">
       <EntityTypeMapping TypeName="vivoshopDBModel.OrderDetail">
         <MappingFragment StoreEntitySet="OrderDetails">
+          <ScalarProperty Name="ProOrderId" ColumnName="ProOrderId" />
           <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
           <ScalarProperty Name="Pro_Id" ColumnName="Pro_Id" />
           <ScalarProperty Name="OrderDetails_Number" ColumnName="OrderDetails_Number" />

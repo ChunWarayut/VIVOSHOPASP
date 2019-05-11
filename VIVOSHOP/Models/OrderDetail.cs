@@ -23,7 +23,8 @@ namespace VIVOSHOP.Models
         public int OrderDetails_Number { get; set; }
         [DisplayName("ราคา")]
         public decimal Pro_Price { get; set; }
-    
+        [DisplayName("เลขที่ใบสั่งซื้อ")]
+        public int ProOrderId { get; set; }
         public virtual Product Product { get; set; }
     }
 }

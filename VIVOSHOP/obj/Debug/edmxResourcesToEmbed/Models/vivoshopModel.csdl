@@ -17,6 +17,7 @@
     <Property Name="OrderDetails_Number" Type="Int32" Nullable="false" />
     <Property Name="Pro_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
     <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_ToTable" FromRole="OrderDetails" ToRole="Product" />
+    <Property Name="ProOrderId" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
