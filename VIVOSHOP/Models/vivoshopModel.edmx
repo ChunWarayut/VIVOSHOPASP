@@ -44,7 +44,7 @@
           <Property Name="Order_Date" Type="datetime" Nullable="false" />
           <Property Name="Order_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="Order_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -167,7 +167,7 @@
           <Property Name="Order_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Order_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
           <Property Name="Order_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" DefaultValue="ไม่มีข้อมูล" />
           <NavigationProperty Name="UserAccout" Relationship="Self.FK_ProductOrder_ToTable" FromRole="ProductOrder" ToRole="UserAccout" />
         </EntityType>
         <EntityType Name="ProductType">

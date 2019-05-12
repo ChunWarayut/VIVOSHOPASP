@@ -39,7 +39,7 @@
     <Property Name="Order_Date" Type="datetime" Nullable="false" />
     <Property Name="Order_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
     <Property Name="Order_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" Nullable="false" />
+    <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" />
   </EntityType>
   <EntityType Name="ProductType">
     <Key>

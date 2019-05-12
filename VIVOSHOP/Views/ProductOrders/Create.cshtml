@@ -16,7 +16,7 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.User_Id, "User_Id", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.User_Id, "ชื่อลูกค้า", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("User_Id", null, htmlAttributes: new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
@@ -29,15 +29,7 @@
             <input type="text" class="form-control" readonly value="@ViewBag.Prosum" id="Order_Price" name="Order_Price" />
             @Html.ValidationMessageFor(model => model.Order_Price, "", new { @class = "text-danger" })
         </div>
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(model => model.Order_Price, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input type="text" class="form-control" readonly value="@ViewBag.sum" />
-            @Html.ValidationMessageFor(model => model.Order_Price, "", new { @class = "text-danger" })
-        </div>
-    </div>
+    </div> 
 
     <div class="form-group">
         @Html.LabelFor(model => model.Order_Status, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,16 +53,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="บันทึกข้อมูล" class="btn btn-default" />
         </div>
     </div>
 </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
+ 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
