@@ -131,6 +131,7 @@
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrderDetailsController.cs" />
+    <Compile Include="Controllers\ProductOrdersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductTypesController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -264,6 +265,11 @@
     <Content Include="Views\OrderDetails\Details.cshtml" />
     <Content Include="Views\OrderDetails\Edit.cshtml" />
     <Content Include="Views\OrderDetails\Index.cshtml" />
+    <Content Include="Views\ProductOrders\Create.cshtml" />
+    <Content Include="Views\ProductOrders\Delete.cshtml" />
+    <Content Include="Views\ProductOrders\Details.cshtml" />
+    <Content Include="Views\ProductOrders\Edit.cshtml" />
+    <Content Include="Views\ProductOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

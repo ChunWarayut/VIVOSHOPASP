@@ -41,9 +41,8 @@
     <Property Name="User_Id" Type="Int32" Nullable="false" />
     <Property Name="Order_Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Order_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-    <Property Name="Order_Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="Order_Status" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Order_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="UserAccout" Relationship="Self.FK_ProductOrder_ToTable" FromRole="ProductOrder" ToRole="UserAccout" />
   </EntityType>
   <EntityType Name="ProductType">

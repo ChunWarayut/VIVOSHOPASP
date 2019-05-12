@@ -43,9 +43,8 @@
           <Property Name="User_Id" Type="int" Nullable="false" />
           <Property Name="Order_Date" Type="datetime" Nullable="false" />
           <Property Name="Order_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="Order_Picture" Type="nvarchar(max)" />
-          <Property Name="Order_Status" Type="nvarchar" MaxLength="3" Nullable="false" />
-          <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" />
+          <Property Name="Order_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -167,9 +166,8 @@
           <Property Name="User_Id" Type="Int32" Nullable="false" />
           <Property Name="Order_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Order_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-          <Property Name="Order_Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Order_Status" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+          <Property Name="Order_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserAccout" Relationship="Self.FK_ProductOrder_ToTable" FromRole="ProductOrder" ToRole="UserAccout" />
         </EntityType>
         <EntityType Name="ProductType">
@@ -295,7 +293,6 @@
                 <ScalarProperty Name="User_Id" ColumnName="User_Id" />
                 <ScalarProperty Name="Order_Date" ColumnName="Order_Date" />
                 <ScalarProperty Name="Order_Price" ColumnName="Order_Price" />
-                <ScalarProperty Name="Order_Picture" ColumnName="Order_Picture" />
                 <ScalarProperty Name="Order_Status" ColumnName="Order_Status" />
                 <ScalarProperty Name="Order_Parcel" ColumnName="Order_Parcel" />
               </MappingFragment>

@@ -3,53 +3,50 @@
 @{
     ViewBag.Title = "Index";
 }
-    <center>
-        <h2>ตะกร้าสินค้า</h2>
-        </>
-        <table class="table">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Product.Pro_Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.OrderDetails_Number)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Pro_Price)
-                </th>
-                <th></th>
-            </tr>
+<center>
+    <h2>ตะกร้าสินค้า</h2>
+</center>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Pro_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDetails_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pro_Price)
+        </th>
+        <th></th>
+    </tr>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Product.Pro_Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrderDetails_Number)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pro_Price)
-                    </td>
-                    <td>
-                        @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
-                    </td>
-                </tr>
-            }
-            <tr>
-                <td>
-                    
-                </td>
-                <td>
-                    รวม
-                </td>
-                <td>
-                    @ViewBag.Prosum บาท
-                </td>
-                <td>
-                   
-                </td>
-            </tr>
-        </table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Pro_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetails_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pro_Price)
+            </td>
+            <td>
+                @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td></td>
+        <td>
+            รวม
+        </td>
+        <td>
+            @ViewBag.Prosum บาท
+        </td>
+        <td></td>
+    </tr>
+</table>
 
+<a href="ProductOrders/Create?price=@ViewBag.Prosum" class="btn btn-info">ชำระเงิน</a>

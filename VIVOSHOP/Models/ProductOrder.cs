@@ -23,8 +23,6 @@ namespace VIVOSHOP.Models
         public System.DateTime Order_Date { get; set; }
         [DisplayName("ยอดสุทธิ")]
         public decimal Order_Price { get; set; }
-        [DisplayName("รูปภาพ")]
-        public string Order_Picture { get; set; }
         [DisplayName("สถานะ")]
         public string Order_Status { get; set; }
         [DisplayName("หมายเลขพัสดุ")]

@@ -38,9 +38,8 @@
     <Property Name="User_Id" Type="int" Nullable="false" />
     <Property Name="Order_Date" Type="datetime" Nullable="false" />
     <Property Name="Order_Price" Type="decimal" Precision="7" Scale="2" Nullable="false" />
-    <Property Name="Order_Picture" Type="nvarchar(max)" />
-    <Property Name="Order_Status" Type="nvarchar" MaxLength="3" Nullable="false" />
-    <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" />
+    <Property Name="Order_Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Order_Parcel" Type="nvarchar" MaxLength="13" Nullable="false" />
   </EntityType>
   <EntityType Name="ProductType">
     <Key>
