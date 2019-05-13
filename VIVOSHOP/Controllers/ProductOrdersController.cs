@@ -33,6 +33,7 @@ namespace VIVOSHOP.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.order = db.OrderDetails.Where(x=>x.ProOrderId == id).ToList();
             return View(productOrder);
         }
 
@@ -84,6 +85,7 @@ namespace VIVOSHOP.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.order = db.OrderDetails.Where(x => x.ProOrderId == id).ToList();
             ViewBag.User_Id = new SelectList(db.UserAccouts, "User_Id", "User_Name", productOrder.User_Id);
             return View(productOrder);
         }
@@ -97,7 +99,12 @@ namespace VIVOSHOP.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(productOrder).State = EntityState.Modified;
+                var update = db.ProductOrders.Where(x => x.Order_Id == productOrder.Order_Id).ToList();
+                if (update.Count() > 0)
+                {
+                    update.ForEach(x => { x.Order_Status = productOrder.Order_Status; x.Order_Parcel = productOrder.Order_Parcel; });
+                    db.SaveChanges();
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
