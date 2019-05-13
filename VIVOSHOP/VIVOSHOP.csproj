@@ -184,6 +184,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="image\1_YfEOtukQSNXUOBcgZjuKLg.png" />
+    <Content Include="image\2018322_72713.jpg" />
+    <Content Include="image\5f1f709640d176687be02819b9ca9101.png" />
+    <Content Include="image\636225.jpg" />
+    <Content Include="image\77b47ae9773ea87a15e032d06a64119f.png" />
+    <Content Include="image\87c559581cd6682562f83f4a2e7c4071.jpg" />
+    <Content Include="image\93a5399409d57ef59654044fa830ab19.png" />
+    <Content Include="image\c3643ede9e3e3979de333573d9a2a78d.png" />
+    <Content Include="image\D03_3.png" />
+    <Content Include="image\d986121530c1cca08429d3b82e9efa21.png" />
+    <Content Include="image\gradient-abstract-vivo.jpg" />
+    <Content Include="image\Huawei-P30-Pro.jpg" />
+    <Content Include="image\VIVO V11.jpg" />
+    <Content Include="image\VIVOV15.jpg" />
     <Content Include="Models\vivoshopModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>vivoshopModel.edmx</DependentUpon>
