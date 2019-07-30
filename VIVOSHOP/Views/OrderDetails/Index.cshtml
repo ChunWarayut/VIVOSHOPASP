@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
 <hr />
 <center>
     <h2>ตะกร้าสินค้า</h2>
@@ -58,9 +64,9 @@
 }
 else
 {
-<center>
-    <h3 style="color:darkred;">
-        กรุณาเลือกสินค้า
-    </h3>
-</center>
+    <center>
+        <h3 style="color:darkred;">
+            กรุณาเลือกสินค้า
+        </h3>
+    </center>
 }

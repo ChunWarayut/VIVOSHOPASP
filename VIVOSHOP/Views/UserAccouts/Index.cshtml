@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
 <div class="row">
     <div class="col-md-8">
         <h2>ระบบจัดการข้อมูลผู้ใช้งาน</h2>
@@ -69,7 +74,7 @@
                 @Html.DisplayFor(modelItem => item.User_Address)
             </td>
             <td>
-                @Html.ActionLink("แก้ไข", "Edit", new { id = item.User_Id }) | 
+                @Html.ActionLink("แก้ไข", "Edit", new { id = item.User_Id }) |
                 @Html.ActionLink("ลบ", "Delete", new { id = item.User_Id })
             </td>
         </tr>

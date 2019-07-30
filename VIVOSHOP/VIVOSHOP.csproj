@@ -284,6 +284,8 @@
     <Content Include="Views\ProductOrders\Details.cshtml" />
     <Content Include="Views\ProductOrders\Edit.cshtml" />
     <Content Include="Views\ProductOrders\Index.cshtml" />
+    <Content Include="Views\Login\Create.cshtml" />
+    <Content Include="Views\Login\Logout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

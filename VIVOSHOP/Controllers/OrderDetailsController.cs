@@ -36,7 +36,7 @@ namespace VIVOSHOP.Controllers
         public ActionResult Create(decimal? price, int? id)
         {
             ViewBag.Price = price;
-            ViewBag.Pro_Id = id; 
+            ViewBag.Pro_Id = id;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

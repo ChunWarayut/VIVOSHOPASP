@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
 <div class="row">
     <div class="col-md-8">
         <h2>ระบบจัดการข้อมูลประเภทสินค้า</h2>
@@ -39,7 +44,7 @@
                 @Html.DisplayFor(modelItem => item.ProType_Name)
             </td>
             <td>
-                @Html.ActionLink("แก้ไข", "Edit", new { id = item.ProType_Id }) | 
+                @Html.ActionLink("แก้ไข", "Edit", new { id = item.ProType_Id }) |
                 @Html.ActionLink("ลบ", "Delete", new { id = item.ProType_Id })
             </td>
         </tr>

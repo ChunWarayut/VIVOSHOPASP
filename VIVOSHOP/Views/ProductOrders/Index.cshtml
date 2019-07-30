@@ -3,7 +3,12 @@
 @{
     ViewBag.Title = "Index";
 }
-
+@{
+    if (Session["User_Id"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
 <h2>ระบบจัดการข้อมูลการชำระเงิน</h2>
 
 <table class="table table-striped">
@@ -48,7 +53,8 @@
                 @Html.ActionLink("แก้ไข", "Edit", new { id = item.Order_Id }) |
                 @if (@item.Order_Status == "ชำระแล้ว")
                 {<a>
-                    @Html.ActionLink("พิมพ์ใบเสร็จรับเงิน", "Details", new { id = item.Order_Id }) |</a>
+                        @Html.ActionLink("พิมพ์ใบเสร็จรับเงิน", "Details", new { id = item.Order_Id }) |
+                    </a>
                 }
                 @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
             </td>

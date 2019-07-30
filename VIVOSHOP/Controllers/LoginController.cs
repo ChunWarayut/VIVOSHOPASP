@@ -34,10 +34,37 @@ namespace VIVOSHOP.Controllers
                 return RedirectToAction("Index","Home");
             }
         }
+
+
+        // GET: UserAccouts/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: UserAccouts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "User_Id,User_Name,User_Lastname,User_Sex,User_Tel,User_Email,User_Address")] UserAccout userAccout)
+        {
+            if (ModelState.IsValid)
+            {
+                db.UserAccouts.Add(userAccout);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(userAccout);
+        }
+
+
+
         public ActionResult Logout()
         {
             Session.Abandon();
-            return RedirectToAction("Index", "Login");
+            return View();
         }
     }
 }
