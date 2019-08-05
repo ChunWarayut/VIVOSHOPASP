@@ -28,14 +28,22 @@
         </header>
         <div class="nav-scroller py-1 mb-2">
             <nav class="nav d-flex justify-content-between">
+
                 @Html.ActionLink("หน้าหลัก", "Index", "Home", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("ข้อมูลสมาชิก", "Index", "UserAccouts", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("ข้อมูลประเภทสินค้า", "Index", "ProductTypes", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("ข้อมูลสินค้า", "Index", "Products", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("ข้อมูลธนาคาร", "Index", "Bank", new { }, new { @class = "p-2 text-muted" })
                 @Html.ActionLink("ตะกร้าสินค้า", "Index", "OrderDetails", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("การชำระเงิน", "Index", "ProductOrders", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("รายงาน", "Index", "Report", new { }, new { @class = "p-2 text-muted" })
+                @Html.ActionLink("ประวัติการสั่ง", "Index", "History", new { }, new { @class = "p-2 text-muted" })
+
+                @{
+                    if (Session["User_Id"] != null && Session["User_Id"].ToString() == "1")
+                    {
+                        @Html.ActionLink("ข้อมูลสมาชิก", "Index", "UserAccouts", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ข้อมูลประเภทสินค้า", "Index", "ProductTypes", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ข้อมูลสินค้า", "Index", "Products", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("ข้อมูลธนาคาร", "Index", "Bank", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("การชำระเงิน", "Index", "ProductOrders", new { }, new { @class = "p-2 text-muted" })
+                        @Html.ActionLink("รายงาน", "Index", "Report", new { }, new { @class = "p-2 text-muted" })
+                    }
+                }
                 @{
                     if (Session["User_Id"] == null)
                     {
