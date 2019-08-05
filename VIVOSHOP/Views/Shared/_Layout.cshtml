@@ -31,7 +31,6 @@
 
                 @Html.ActionLink("หน้าหลัก", "Index", "Home", new { }, new { @class = "p-2 text-muted" })
                 @Html.ActionLink("ตะกร้าสินค้า", "Index", "OrderDetails", new { }, new { @class = "p-2 text-muted" })
-                @Html.ActionLink("ประวัติการสั่ง", "Index", "History", new { }, new { @class = "p-2 text-muted" })
 
                 @{
                     if (Session["User_Id"] != null && Session["User_Id"].ToString() == "1")
@@ -52,6 +51,7 @@
                     }
                     else
                     {
+                        @Html.ActionLink("ประวัติการสั่ง", "Index", "History", new { }, new { @class = "p-2 text-muted" })
                         @Html.ActionLink("ออกจากระบบ", "Logout", "Login", new { }, new { @class = "p-2 text-muted" })
                     }
                 }
