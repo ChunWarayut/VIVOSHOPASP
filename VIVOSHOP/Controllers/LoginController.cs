@@ -51,12 +51,16 @@ namespace VIVOSHOP.Controllers
         {
             if (ModelState.IsValid)
             {
+                Session["User_Email"] = userAccout.User_Email;
+                Session["User_Id"] = userAccout.User_Id;
+                Session["User_Name"] = userAccout.User_Name;
+                Session["User_Lastname"] = userAccout.User_Lastname;
+                Session["User_Tel"] = userAccout.User_Tel;
                 db.UserAccouts.Add(userAccout);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
 
-            return View(userAccout);
+            return RedirectToAction("Index", "Home");
         }
 
 

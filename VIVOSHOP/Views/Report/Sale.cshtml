@@ -38,6 +38,9 @@
     <table class="table table-striped">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Order_Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Order_Date)
             </th>
             <th>
@@ -56,24 +59,27 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Order_Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Order_Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Order_Status)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Order_Parcel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserAccout.User_Name)
-                </td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Order_Parcel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAccout.User_Name)
+        </td>
 
-            </tr>
+    </tr>
         }
 
     </table>
