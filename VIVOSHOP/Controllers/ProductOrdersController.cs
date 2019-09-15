@@ -17,8 +17,17 @@ namespace VIVOSHOP.Controllers
         // GET: ProductOrders
         public ActionResult Index()
         {
+            var ID = int.Parse(Session["User_Id"].ToString());
             var productOrders = db.ProductOrders.Include(p => p.UserAccout);
-            return View(productOrders.ToList());
+            if (ID == 1)
+            {
+                return View(productOrders.ToList());
+            }
+            else
+            {
+                var productOrders = db.ProductOrders.Where(x => x.User_Id == ID);
+                return View(productOrders.ToList());
+            }
         }
 
         // GET: ProductOrders/Details/5
