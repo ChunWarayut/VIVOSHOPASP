@@ -53,7 +53,8 @@
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Order_Status, new List<SelectListItem>{
                 new SelectListItem() {Text = "รอชำระเงิน", Value="รอชำระเงิน"},
-                new SelectListItem() {Text = "ชำระแล้ว", Value="ชำระแล้ว"}
+                new SelectListItem() {Text = "ชำระแล้ว", Value="ชำระแล้ว"},
+                new SelectListItem() {Text = "ขายแล้ว", Value="ขายแล้ว"}
                 }, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Order_Status, "", new { @class = "text-danger" })
         </div>

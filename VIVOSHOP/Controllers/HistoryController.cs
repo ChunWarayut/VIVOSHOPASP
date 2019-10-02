@@ -35,5 +35,31 @@ namespace VIVOSHOP.Controllers
             return View(productOrder);
         }
 
+        // GET: ProductOrders/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ProductOrder productOrder = db.ProductOrders.Find(id);
+            if (productOrder == null)
+            {
+                return HttpNotFound();
+            }
+            return View(productOrder);
+        }
+
+        // POST: ProductOrders/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            ProductOrder productOrder = db.ProductOrders.Find(id);
+            db.ProductOrders.Remove(productOrder);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
