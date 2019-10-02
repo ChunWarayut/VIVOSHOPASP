@@ -11,11 +11,38 @@
 }
 
 <h2>ระบบจัดการข้อมูลการชำระเงิน</h2>
-<div class="float-right">
-    <h2>
-        <b>@Html.ActionLink("ชำระเงิน", "Index", "Bank", null, null)</b>
-    </h2>
-</div>
+@*<div class="float-right">
+        <h2>
+            <b>@Html.ActionLink("ชำระเงิน", "Index", "Bank", null, null)</b>
+        </h2>
+    </div>*@
+
+<table class="table table-striped" style="width: fit-content">
+    <tr>
+        <th>
+            @Html.DisplayName("เลขที่บัญชี")
+        </th>
+        <th>
+            @Html.DisplayName("ชื่อธนาคาร")
+        </th>
+        <th>
+            @Html.DisplayName("ชื่อบัญชี")
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @Html.DisplayName("0138810372")
+        </td>
+        <td>
+            @Html.DisplayName("กสิกรไทย")
+        </td>
+        <td>
+            @Html.DisplayName("กาญจนา เรือนเพชร")
+        </td>
+    </tr>
+
+</table>
 
 <table class="table table-striped">
     <tr>
@@ -63,12 +90,13 @@
             </td>
             <td>
                 @*@Html.ActionLink("แก้ไข", "Edit", new { id = item.Order_Id }) |*@
-                @if (@item.Order_Status == "ชำระแล้ว")
+                @if (@item.Order_Status == "ชำระแล้ว" && int.Parse(Session["User_Id"].ToString()) == 50001)
                 {
                     <a>
                         @Html.ActionLink("พิมพ์ใบเสร็จ", "Details", new { id = item.Order_Id }) |
                     </a>
                 }
+                @Html.ActionLink("สลิป", "Edit", new { id = item.Order_Id })
                 @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
             </td>
         </tr>
@@ -78,30 +106,8 @@
 
 <hr />
 <br />
-
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayName("เลขที่บัญชี")
-        </th>
-        <th>
-            @Html.DisplayName("ชื่อธนาคาร")
-        </th>
-        <th>
-            @Html.DisplayName("ชื่อบัญชี")
-        </th>
-    </tr>
-
-    <tr>
-        <td>
-            @Html.DisplayName("เลขที่บัญชี")
-        </td>
-        <td>
-            @Html.DisplayName("เลขที่บัญชี")
-        </td>
-        <td>
-            @Html.DisplayName("เลขที่บัญชี")
-        </td>
-    </tr>
-
-</table>
+@*<div class="float-right">
+        <h2>
+            <b>@Html.ActionLink("ชำระเงิน", "Index", "Bank", null, null)</b>
+        </h2>
+    </div>*@

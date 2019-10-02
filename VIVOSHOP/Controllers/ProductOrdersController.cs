@@ -80,7 +80,7 @@ namespace VIVOSHOP.Controllers
                     update.ForEach(x => { x.ProOrderId = ProID; }); 
                     db.SaveChanges();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "History");
             }
 
             ViewBag.User_Id = new SelectList(db.UserAccouts, "User_Id", "User_Name", productOrder.User_Id);

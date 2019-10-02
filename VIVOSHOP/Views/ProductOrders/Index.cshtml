@@ -60,7 +60,7 @@
         @if (@item.Order_Status == "ชำระแล้ว")
         {<a>
                 @Html.ActionLink("พิมพ์ใบชำระเงิน", "Details", new { id = item.Order_Id }) |
-            </a>
+         </a>
         }
         @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
     </td>
