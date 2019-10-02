@@ -33,6 +33,9 @@
 <table class="table table-striped">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Pro_Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Pro_Name)
         </th>
         <th>
@@ -52,31 +55,34 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pro_Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pro_Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pro_Color)
-            </td>
-            <td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Price)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pro_Color)
+    </td>
+    <td>
 
-                <img src="~/image/@Html.DisplayFor(modelItem => item.Pro_Picture)"
-                     alt="company logo"
-                     height="50px"
-                     asp-append-version="true" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductType.ProType_Name)
-            </td>
-            <td>
-                @Html.ActionLink("แก้ไข", "Edit", new { id = item.Pro_Id }) |
-                @Html.ActionLink("ลบ", "Delete", new { id = item.Pro_Id })
-            </td>
-        </tr>
+        <img src="~/image/@Html.DisplayFor(modelItem => item.Pro_Picture)"
+             alt="company logo"
+             height="50px"
+             asp-append-version="true" />
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductType.ProType_Name)
+    </td>
+    <td>
+        @Html.ActionLink("แก้ไข", "Edit", new { id = item.Pro_Id }) |
+        @Html.ActionLink("ลบ", "Delete", new { id = item.Pro_Id })
+    </td>
+</tr>
     }
 
 </table>

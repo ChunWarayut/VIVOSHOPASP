@@ -90,16 +90,12 @@ namespace VIVOSHOP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Bank bank = db.Banks.Find(id);
-            if (bank==null)
-            {
-                return HttpNotFound();
-            }
-            return View(bank); 
+
+            Bank bankssss = db.Banks.Find(id);
+            db.Banks.Remove(bankssss);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         protected override void Dispose(bool disposing)

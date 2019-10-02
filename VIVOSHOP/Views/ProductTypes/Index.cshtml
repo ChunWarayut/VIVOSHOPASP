@@ -32,6 +32,9 @@
 <table class="table table-striped">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.ProType_Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ProType_Name)
         </th>
         <th></th>
@@ -39,15 +42,18 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProType_Name)
-            </td>
-            <td>
-                @Html.ActionLink("แก้ไข", "Edit", new { id = item.ProType_Id }) |
-                @Html.ActionLink("ลบ", "Delete", new { id = item.ProType_Id })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProType_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProType_Name)
+    </td>
+    <td>
+        @Html.ActionLink("แก้ไข", "Edit", new { id = item.ProType_Id }) |
+        @Html.ActionLink("ลบ", "Delete", new { id = item.ProType_Id })
+    </td>
+</tr>
     }
 
 </table>

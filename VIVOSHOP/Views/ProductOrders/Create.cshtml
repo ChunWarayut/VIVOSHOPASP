@@ -27,7 +27,7 @@
         @Html.LabelFor(model => model.User_Id, "ชื่อลูกค้า", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="text" class="form-control" readonly value="@Session["User_Name"]" id="User_Name" name="User_Name" />
-            <input type="hidden" class="form-control" readonly value="@Session["User_Id"]" id="User_Id" name="User_Id" />
+            <input type="hidden"class="form-control" readonly value="@Session["Id"]" id="User_Id" name="User_Id" />
             @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
         </div>
     </div>

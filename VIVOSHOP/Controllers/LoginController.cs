@@ -26,6 +26,7 @@ namespace VIVOSHOP.Controllers
             }
             else
             {
+                Session["id"] = userDetail.User_Id;
                 Session["User_Email"] = userDetail.User_Email;
                 Session["User_Id"] = userDetail.User_Id;
                 Session["User_Name"] = userDetail.User_Name;
@@ -49,14 +50,40 @@ namespace VIVOSHOP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "User_Id,User_Name,User_Lastname,User_Sex,User_Tel,User_Email,User_Address")] UserAccout userAccout)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.UserAccouts.Add(userAccout);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
 
-            return View(userAccout);
+                var emailChecked = new System.Net.Mail.MailAddress(userAccout.User_Email);                
+                if (userAccout.User_Tel.Length < 10)
+                {
+                    var phoneChecked = new System.Net.Mail.MailAddress(userAccout.User_Tel);
+                }
+                if (ModelState.IsValid)
+                {
+                    Session["id"] = userAccout.User_Id;
+                    Session["User_Email"] = userAccout.User_Email;
+                    Session["User_Id"] = userAccout.User_Id;
+                    Session["User_Name"] = userAccout.User_Name;
+                    Session["User_Lastname"] = userAccout.User_Lastname;
+                    Session["User_Tel"] = userAccout.User_Tel;
+                    db.UserAccouts.Add(userAccout);
+                    db.SaveChanges();
+                    var user = db.UserAccouts.OrderByDescending(x => x.User_Id).FirstOrDefault();
+                    Session["id"] = user.User_Id;
+                    Session["User_Email"] = user.User_Email;
+                    Session["User_Id"] = user.User_Id;
+                    Session["User_Name"] = user.User_Name;
+                    Session["User_Lastname"] = user.User_Lastname;
+                    Session["User_Tel"] = user.User_Tel;
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                ViewBag.ErrorCHK = "True";
+                return View("Index");
+            }
         }
 
 

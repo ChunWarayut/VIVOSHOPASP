@@ -17,8 +17,17 @@ namespace VIVOSHOP.Controllers
         // GET: ProductOrders
         public ActionResult Index()
         {
+            var ID = int.Parse(Session["User_Id"].ToString());
             var productOrders = db.ProductOrders.Include(p => p.UserAccout);
-            return View(productOrders.ToList());
+            if (ID == 50001)
+            {
+                return View(productOrders.ToList());
+            }
+            else
+            {
+                var bankDB = db.ProductOrders.Where(x => x.User_Id == ID);
+                return View(bankDB.ToList());
+            }
         }
 
         // GET: ProductOrders/Details/5
@@ -55,8 +64,13 @@ namespace VIVOSHOP.Controllers
         public ActionResult Create([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel")] ProductOrder productOrder)
         {
             if (ModelState.IsValid)
-            { 
+            {
+                var user_II = int.Parse(Session["Id"].ToString());
+                var user_name =Session["User_Name"];
+                var test = productOrder;
                 productOrder.Order_Date = DateTime.Now;
+
+                productOrder.User_Id = user_II;
                 db.ProductOrders.Add(productOrder);
                 db.SaveChanges();
                 var update = db.OrderDetails.Where(x => x.ProOrderId == 0).ToList();

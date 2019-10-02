@@ -19,6 +19,9 @@
     <table class="table table-striped">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Product.Pro_Id)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Product.Pro_Name)
             </th>
             <th>
@@ -32,20 +35,23 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Product.Pro_Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrderDetails_Number)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pro_Price)
-                </td>
-                <td>
-                    @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Pro_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.Pro_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDetails_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pro_Price)
+        </td>
+        <td>
+            @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })
+        </td>
+    </tr>
         }
         <tr>
             <td></td>

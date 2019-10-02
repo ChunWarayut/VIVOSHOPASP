@@ -28,7 +28,7 @@
     <Property Name="Pro_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Pro_Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Pro_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
-    <Property Name="Pro_Color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Pro_Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Pro_Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_ToTable" FromRole="Product" ToRole="OrderDetails" />
     <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="ProductType" />

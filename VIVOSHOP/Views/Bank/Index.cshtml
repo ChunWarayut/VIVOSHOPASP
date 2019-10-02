@@ -13,7 +13,7 @@
     <div class="col-md-8">
         <h2>ระบบจัดการข้อมูลธนาคาร</h2>
         @{
-            if(Session["User_Id"].ToString() == "1")
+            if(Session["User_Id"].ToString() == "50001")
             {
             <p>
                 @Html.ActionLink("เพิ่มข้อมูล", "Create")
@@ -26,7 +26,7 @@
     <div class="col-md-4">
         <br />
         @{
-            if (Session["User_Id"].ToString() == "1")
+            if (Session["User_Id"].ToString() == "50001")
             {
                 <form method="get" action="/Bank/Index">
                     <div class="row">
@@ -54,7 +54,7 @@
             @Html.DisplayNameFor(model => model.Bank_User)
         </th>
         @{
-            if (Session["User_Id"].ToString() == "1")
+            if (Session["User_Id"].ToString() == "50001")
             {
                 <th></th>
             }
@@ -74,7 +74,7 @@
         @Html.DisplayFor(modelItem => item.Bank_User)
     </td>
     @{
-        if (Session["User_Id"].ToString() == "1")
+        if (Session["User_Id"].ToString() == "50001")
         {
             <td>
                 @Html.ActionLink("แก้ไข", "Edit", new { id = item.Bank_Number }) |
