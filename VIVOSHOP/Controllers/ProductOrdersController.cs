@@ -61,7 +61,7 @@ namespace VIVOSHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel")] ProductOrder productOrder)
+        public ActionResult Create([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel")] ProductOrder productOrder, string User_Address)
         {
             if (ModelState.IsValid)
             {
@@ -78,6 +78,12 @@ namespace VIVOSHOP.Controllers
                 if (update.Count() > 0)
                 {
                     update.ForEach(x => { x.ProOrderId = ProID; }); 
+                    db.SaveChanges();
+                }
+                var updateuser = db.UserAccouts.Where(x => x.User_Id == user_II).ToList();
+                if (User_Address.Length > 0)
+                {
+                    updateuser.ForEach(x => { x.User_Address = User_Address; });
                     db.SaveChanges();
                 }
                 return RedirectToAction("Index", "History");

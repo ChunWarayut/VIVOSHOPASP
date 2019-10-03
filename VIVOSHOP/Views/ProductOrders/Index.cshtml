@@ -59,7 +59,7 @@
         @Html.ActionLink("แก้ไข", "Edit", new { id = item.Order_Id }) |
         @if (@item.Order_Status == "ชำระแล้ว")
         {<a>
-                @Html.ActionLink("พิมพ์ใบชำระเงิน", "Details", new { id = item.Order_Id }) |
+                @Html.ActionLink("พิมพ์ใบเสร็จ", "Details", new { id = item.Order_Id }) |
          </a>
         }
         @Html.ActionLink("ลบ", "Delete", new { id = item.Order_Id })

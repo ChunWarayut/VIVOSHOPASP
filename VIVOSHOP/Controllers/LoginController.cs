@@ -31,7 +31,8 @@ namespace VIVOSHOP.Controllers
                 Session["User_Id"] = userDetail.User_Id;
                 Session["User_Name"] = userDetail.User_Name;
                 Session["User_Lastname"] = userDetail.User_Lastname;
-                Session["User_Tel"] = userDetail.User_Tel; 
+                Session["User_Tel"] = userDetail.User_Tel;
+                Session["User_Address"] = userDetail.User_Address;
                 return RedirectToAction("Index","Home");
             }
         }
@@ -66,6 +67,7 @@ namespace VIVOSHOP.Controllers
                     Session["User_Name"] = userAccout.User_Name;
                     Session["User_Lastname"] = userAccout.User_Lastname;
                     Session["User_Tel"] = userAccout.User_Tel;
+                    Session["User_Address"] = userAccout.User_Address;
                     db.UserAccouts.Add(userAccout);
                     db.SaveChanges();
                     var user = db.UserAccouts.OrderByDescending(x => x.User_Id).FirstOrDefault();
@@ -75,6 +77,7 @@ namespace VIVOSHOP.Controllers
                     Session["User_Name"] = user.User_Name;
                     Session["User_Lastname"] = user.User_Lastname;
                     Session["User_Tel"] = user.User_Tel;
+                    Session["User_Address"] = user.User_Address;
                 }
 
                 return RedirectToAction("Index", "Home");

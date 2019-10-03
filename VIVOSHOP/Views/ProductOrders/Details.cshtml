@@ -40,90 +40,115 @@
         <div class="row">
             <div
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <p style="text-align:right;">
-                    <b>@Html.DisplayNameFor(model => model.Order_Date)</b>
-                    @Html.DisplayFor(model => model.Order_Date)
-                </p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p style="text-align:right;">
+                        <b>@Html.DisplayNameFor(model => model.Order_Date)</b>
+                        @Html.DisplayFor(model => model.Order_Date)
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <p>
-                    <b>@Html.DisplayNameFor(model => model.Order_Id)</b>
-                    @Html.DisplayFor(model => model.Order_Id)
-                </p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Order_Id)</b>
+                        @Html.DisplayFor(model => model.Order_Id)
+                    </p>
+                </div>
             </div>
-        </div>
 
-
-
-
-
-        <div class="row">
-            <div class="col-lg-12">
-                <p>
-                    <b>@Html.DisplayNameFor(model => model.UserAccout.User_Name)</b>
-                    @Html.DisplayFor(model => model.UserAccout.User_Name)
-                    @Html.DisplayFor(model => model.UserAccout.User_Lastname)
-                </p>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Order_Price)</b>
+                        @Html.DisplayFor(model => model.Order_Price) บาท
+                    </p>
+                </div>
             </div>
-        </div>
 
+            <div class="row">
+                <div class="col-lg-12">
 
+                    <p>
+                        <b>สินค้าที่สั่งซื้อ</b>
+                        <ul>
+                            @{
+                                var getlist = ViewBag.order as IEnumerable<VIVOSHOP.Models.OrderDetail>;
 
-        <div class="row">
-            <div class="col-lg-12">
-                <p>
-                    <b>@Html.DisplayNameFor(model => model.UserAccout.User_Address)</b>
-                    @Html.DisplayFor(model => model.UserAccout.User_Address)
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <p>
-                    <b>@Html.DisplayNameFor(model => model.Order_Price)</b>
-                    @Html.DisplayFor(model => model.Order_Price) บาท
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-
-                <p>
-                    <b>สินค้าที่สั่งซื้อ</b>
-                    <ul>
-                        @{
-                            var getlist = ViewBag.order as IEnumerable<VIVOSHOP.Models.OrderDetail>;
-
-                            foreach (var item in getlist)
-                            {
-                                <li>@item.Product.Pro_Name จำนวน @item.OrderDetails_Number ราคา @item.Pro_Price บาท</li>
+                                foreach (var item in getlist)
+                                {
+                                    <li>@item.Product.Pro_Name จำนวน @item.OrderDetails_Number ราคา @item.Pro_Price บาท</li>
+                                }
                             }
-                        }
-                    </ul>
-                </p>
+                        </ul>
+                    </p>
+                </div>
             </div>
-        </div>
 
 
-        <div class="row">
-            <div class="col-lg-12">
-                <p>
-                    <b>@Html.DisplayNameFor(model => model.Order_Parcel)</b>
-                    @Html.DisplayFor(model => model.Order_Parcel)
-                </p>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Order_Status)</b>
+                        @Html.DisplayFor(model => model.Order_Status)
+                    </p>
+                </div>
             </div>
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.Order_Parcel)</b>
+                        @Html.DisplayFor(model => model.Order_Parcel)
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.UserAccout.User_Id)</b>
+                        @Html.DisplayFor(model => model.UserAccout.User_Id)
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.UserAccout.User_Name)</b>
+                        @Html.DisplayFor(model => model.UserAccout.User_Name)
+                        @Html.DisplayFor(model => model.UserAccout.User_Lastname)
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>
+                        <b>@Html.DisplayNameFor(model => model.UserAccout.User_Address)</b>
+                        @Html.DisplayFor(model => model.UserAccout.User_Address)
+                    </p>
+                </div>
+            </div>
+
+
+
+
         </div>
-
-
-
-    </div>
 
 
 </DIV>
