@@ -14,6 +14,7 @@
         <AssociationConnector Association="vivoshopDBModel.FK_OrderDetails_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="vivoshopDBModel.FK_Product_ToTable" ManuallyRouted="false" />
         <AssociationConnector Association="vivoshopDBModel.FK_ProductOrder_ToTable" ManuallyRouted="false" />
+        <AssociationConnector Association="vivoshopDBModel.FK_OrderDetails_ToTable_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

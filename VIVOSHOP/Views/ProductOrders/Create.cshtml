@@ -70,7 +70,7 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.UserAccout.User_Address, "ที่อยู่เดิม", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.UserAccout.User_Address, "ที่อยู่", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="text" class="form-control" readonly value="@Session["User_Address"]" id="" name="" />
             @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
@@ -79,7 +79,7 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.UserAccout.User_Address, "ที่อยู่ใหม่", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.UserAccout.User_Address, "ที่อยู่ที่จัดส่ง", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             <input type="text" class="form-control" id="User_Address" name="User_Address" />
             @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
