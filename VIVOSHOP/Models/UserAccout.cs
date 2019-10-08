@@ -45,6 +45,9 @@ using System;
         [DisplayName("ที่อยู่")]
         public string User_Address { get; set; }
 
+        public string LoginErrorMessage { get; set; }
+        public string LoginErrorMessageTEL { get; set; }
+        public string LoginErrorMessageEMAIL { get; set; }
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
