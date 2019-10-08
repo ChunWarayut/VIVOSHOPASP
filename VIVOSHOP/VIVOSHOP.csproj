@@ -204,6 +204,7 @@
       <DependentUpon>vivoshopModel.edmx</DependentUpon>
       <LastGenOutput>vivoshopModel.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\vivoshopModel.edmx.sql" />
     <Content Include="Models\vivoshopModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>vivoshopModel.edmx</DependentUpon>
