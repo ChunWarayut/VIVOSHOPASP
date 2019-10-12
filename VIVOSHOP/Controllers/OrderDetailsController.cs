@@ -17,10 +17,11 @@ namespace VIVOSHOP.Controllers
         // GET: OrderDetails
         public ActionResult Index()
         {
-            var pro_0 = db.OrderDetails.Where(x => x.ProOrderId == 0).ToList();
+            var user_Id = int.Parse(Session["Id"].ToString());
+            var pro_0 = db.OrderDetails.Where(x => x.ProOrderId == 0 && x.User_Id == user_Id).ToList();
             if (pro_0.Count() > 0)
             {
-                ViewBag.Prosum = db.OrderDetails.Where(x => x.ProOrderId == 0).Select(x => x.Pro_Price).Sum();
+                ViewBag.Prosum = db.OrderDetails.Where(x => x.ProOrderId == 0 && x.User_Id == user_Id).Select(x => x.Pro_Price).Sum();
             }
             else
             {
@@ -28,7 +29,7 @@ namespace VIVOSHOP.Controllers
             }
             
             var orderDetails = db.OrderDetails.OrderBy(x=>x.ProOrderId).Include(o => o.Product);
-            return View(orderDetails.Where(x=>x.ProOrderId == 0).ToList());
+            return View(orderDetails.Where(x=>x.ProOrderId == 0 && x.User_Id == user_Id).ToList());
         }
          
 
@@ -56,12 +57,22 @@ namespace VIVOSHOP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Order_Id,Pro_Id,OrderDetails_Number,Pro_Price,ProOrderId")] OrderDetail orderDetail, decimal OrderDetails_Number, decimal Price)
         {
+            var user_Id = int.Parse(Session["Id"].ToString());
             if (ModelState.IsValid)
             {
                 orderDetail.Pro_Price = Price * OrderDetails_Number;
                 orderDetail.ProOrderId = 0;
+                orderDetail.User_Id = user_Id;
                 db.OrderDetails.Add(orderDetail);
                 db.SaveChanges();
+
+                var update = db.Products.Where(x => x.Pro_Id == orderDetail.Pro_Id).FirstOrDefault();
+                if (update != null)
+                {
+                    update.Pro_Amout += Convert.ToInt32(OrderDetails_Number);
+                    db.SaveChanges();
+                }
+
                 return RedirectToAction("Index");
             }
 

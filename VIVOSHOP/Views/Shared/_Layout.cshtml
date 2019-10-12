@@ -28,7 +28,7 @@
                 </div>*@
         </header>
         <div class="nav-scroller py-1 mb-2">
-            <nav class="nav d-flex justify-content-between">
+            <nav class="nav d-flex justify-content-between" style="margin-top: -5px;">
 
                 @Html.ActionLink("หน้าหลัก", "Index", "Home", new { }, new { @class = "p-2 fontsizelarge text-muted" })
 
@@ -39,7 +39,7 @@
                         @Html.ActionLink("ข้อมูลประเภทสินค้า", "Index", "ProductTypes", new { }, new { @class = "p-2 fontsizelarge text-muted" })
                         @Html.ActionLink("ข้อมูลสินค้า", "Index", "Products", new { }, new { @class = "p-2 fontsizelarge text-muted" })
                         @*@Html.ActionLink("ข้อมูลธนาคาร", "Index", "Bank", new { }, new { @class = "p-2 fontsizelarge text-muted" })*@
-                        @Html.ActionLink("ข้อมูลการขาย", "Index", "ProductOrders", new { }, new { @class = "p-2 fontsizelarge text-muted" })
+                        @Html.ActionLink("ข้อมูลการสั่งซื้อ", "Index", "ProductOrders", new { }, new { @class = "p-2 fontsizelarge text-muted" })
                         @Html.ActionLink("รายงาน", "Index", "Report", new { }, new { @class = "p-2 fontsizelarge text-muted" })
                     }
                     else if (Session["User_Id"] != null && Session["User_Id"].ToString() != "50001")
@@ -99,4 +99,12 @@
     .fontsizelarge {
         font-size: large
     }
+    body {
+    font-size: 1.5rem !important;
+}.form-control {
+    font-size: 1.5rem !important;
+}
+ .btn {
+    font-size: 1.5rem !important;
+ }
 </style>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -115,15 +116,35 @@ namespace VIVOSHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel")] ProductOrder productOrder)
+        public ActionResult Edit([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel,Order_img")] ProductOrder productOrder, HttpPostedFileBase Order_img)
         {
             if (ModelState.IsValid)
             {
                 var update = db.ProductOrders.Where(x => x.Order_Id == productOrder.Order_Id).ToList();
                 if (update.Count() > 0)
                 {
-                    update.ForEach(x => { x.Order_Status = productOrder.Order_Status; x.Order_Parcel = productOrder.Order_Parcel; });
-                    db.SaveChanges();
+                    try
+                    {
+                        if (Order_img.ContentLength > 0)
+                        {
+                            string FileName = Path.GetFileName(Order_img.FileName);
+                            string FolderPath = Path.Combine(Server.MapPath("~/image"), FileName);
+                            Order_img.SaveAs(FolderPath);
+                            update.ForEach(x => { x.Order_img = FileName; });
+                            db.SaveChanges();
+                        }
+                        else
+                        {
+                            update.ForEach(x => { x.Order_Status = productOrder.Order_Status; x.Order_Parcel = productOrder.Order_Parcel; });
+                            db.SaveChanges();
+                        }
+                    }
+                    catch
+                    {
+                        update.ForEach(x => { x.Order_Status = productOrder.Order_Status; x.Order_Parcel = productOrder.Order_Parcel; });
+                        db.SaveChanges();
+                    }
+                    
                 }
                 db.SaveChanges();
                 return RedirectToAction("Index");

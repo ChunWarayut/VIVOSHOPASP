@@ -30,11 +30,53 @@
     }
 
 </script>
+
+
+        <form method="get" action="/Report/Sale">
+            <div class="row" align="center">
+                <div class="col-lg-5">
+                    <label class="control-label">
+                        ตั้งแต่วันที่: &nbsp;
+                    </label>
+                    <input class="form-control" type="date" name="gte" id="gte">
+                </div>
+                <div class="col-lg-5">
+                    <label class="control-label">
+                        ถึงวันที่: &nbsp; &nbsp; &nbsp;
+                    </label>
+                    <input class="form-control" type="date" name="lte" id="lte">
+                </div>
+                    <p> &nbsp; &nbsp; &nbsp;</p>
+                    <button type="submit" class="btn btn-light">ค้นหา</button>
+            </div>
+        </form>
+
+
+
 <DIV id="report">
     <center> VIVO SHOP </center>
     <center> รายงานข้อมูลการขาย </center>
     <center>  <p> ชั้น 2 เซนทรัลพลาซ่า นครราชสีมา ตำบลในเมือง อำเภอเมืองนครราชสีมา จังหวัดนครราชสีมา 30000   โทร. 044014230</p> </center>
-    <p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+    @*<p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>*@
+
+
+    <div class="row">
+        <div class="col-3">
+            <p> <b>วันที่พิมพ์ </b>  @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
+
+        <div class="col-9">
+            <div style="align-items: stretch; display: flex;     justify-content: flex-end;">
+                <b>ตั้งแต่วันที่:  &nbsp; @ViewBag.gte </b>
+                <p> &nbsp; &nbsp; &nbsp;</p>
+                <b>ถึงวันที่:  &nbsp; @ViewBag.lte</b>
+                <p> &nbsp; &nbsp; &nbsp;</p>
+            </div>
+        </div>
+
+    </div>
+    <hr />
+
     <table class="table table-striped">
         <tr>
             <th>
@@ -59,27 +101,27 @@
 
         @foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Order_Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Order_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Order_Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Order_Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Order_Parcel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserAccout.User_Name)
-        </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order_Parcel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserAccout.User_Name)
+                </td>
 
-    </tr>
+            </tr>
         }
 
     </table>

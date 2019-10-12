@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="vivoshopDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Bank_Number" />
+    </Key>
+    <Property Name="Bank_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bank_Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Bank_User" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pro_Id" Type="Int32" Nullable="false" />
+    <Property Name="OrderDetails_Number" Type="Int32" Nullable="false" />
+    <Property Name="Pro_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_ToTable" FromRole="OrderDetails" ToRole="Product" />
+    <Property Name="ProOrderId" Type="Int32" Nullable="false" />
+    <Property Name="User_Id" Type="Int32" />
+    <NavigationProperty Name="UserAccout" Relationship="vivoshopDBModel.FK_OrderDetails_ToTable_1" FromRole="OrderDetail" ToRole="UserAccout" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Pro_Id" />
+    </Key>
+    <Property Name="Pro_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProType_Id" Type="Int32" Nullable="false" />
+    <Property Name="Pro_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pro_Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pro_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="Pro_Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Pro_Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_ToTable" FromRole="Product" ToRole="OrderDetails" />
+    <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ToTable" FromRole="Product" ToRole="ProductType" />
+    <Property Name="Pro_Amout" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductOrder">
+    <Key>
+      <PropertyRef Name="Order_Id" />
+    </Key>
+    <Property Name="Order_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Id" Type="Int32" Nullable="false" />
+    <Property Name="Order_Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Order_Price" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="Order_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Order_Parcel" Type="String" MaxLength="13" FixedLength="false" Unicode="true" DefaultValue="ไม่มีข้อมูล" />
+    <NavigationProperty Name="UserAccout" Relationship="Self.FK_ProductOrder_ToTable" FromRole="ProductOrder" ToRole="UserAccout" />
+    <Property Name="Order_img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ProType_Id" />
+    </Key>
+    <Property Name="ProType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProType_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_ToTable" FromRole="ProductType" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="UserAccout">
+    <Key>
+      <PropertyRef Name="User_Id" />
+    </Key>
+    <Property Name="User_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Lastname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Sex" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Tel" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User_Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProductOrders" Relationship="Self.FK_ProductOrder_ToTable" FromRole="UserAccout" ToRole="ProductOrder" />
+    <NavigationProperty Name="OrderDetails" Relationship="vivoshopDBModel.FK_OrderDetails_ToTable_1" FromRole="UserAccout" ToRole="OrderDetail" />
+  </EntityType>
+  <Association Name="FK_OrderDetails_ToTable">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Pro_Id" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="Pro_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ToTable">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="ProType_Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductOrder_ToTable">
+    <End Role="UserAccout" Type="Self.UserAccout" Multiplicity="1" />
+    <End Role="ProductOrder" Type="Self.ProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccout">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="ProductOrder">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="vivoshopDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Banks" EntityType="Self.Bank" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductOrders" EntityType="Self.ProductOrder" />
+    <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
+    <EntitySet Name="UserAccouts" EntityType="Self.UserAccout" />
+    <AssociationSet Name="FK_OrderDetails_ToTable" Association="Self.FK_OrderDetails_ToTable">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ToTable" Association="Self.FK_Product_ToTable">
+      <End Role="ProductType" EntitySet="ProductTypes" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductOrder_ToTable" Association="Self.FK_ProductOrder_ToTable">
+      <End Role="UserAccout" EntitySet="UserAccouts" />
+      <End Role="ProductOrder" EntitySet="ProductOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_ToTable_1" Association="vivoshopDBModel.FK_OrderDetails_ToTable_1">
+      <End Role="UserAccout" EntitySet="UserAccouts" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_OrderDetails_ToTable_1">
+    <End Type="vivoshopDBModel.UserAccout" Role="UserAccout" Multiplicity="0..1" />
+    <End Type="vivoshopDBModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccout">
+        <PropertyRef Name="User_Id" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="User_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

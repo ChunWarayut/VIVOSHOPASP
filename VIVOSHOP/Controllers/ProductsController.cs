@@ -58,7 +58,7 @@ namespace VIVOSHOP.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Pro_Id,ProType_Id,Pro_Name,Pro_Details,Pro_Price,Pro_Color,Pro_Picture")] Product product, HttpPostedFileBase Pro_Picture)
+        public ActionResult Create([Bind(Include = "Pro_Id,ProType_Id,Pro_Name,Pro_Details,Pro_Price,Pro_Color,Pro_Picture,Pro_Amout")] Product product, HttpPostedFileBase Pro_Picture)
         {
             if (Pro_Picture.ContentLength > 0)
             {
@@ -66,7 +66,7 @@ namespace VIVOSHOP.Controllers
                 string FolderPath = Path.Combine(Server.MapPath("~/image"), FileName);
                 Pro_Picture.SaveAs(FolderPath);
                 product.Pro_Picture = FileName;
-
+                product.Pro_Amout = 0;
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
