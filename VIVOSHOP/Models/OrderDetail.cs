@@ -17,7 +17,8 @@ using System;
     using System.ComponentModel;
 
     public partial class OrderDetail
-    {
+{
+
         [DisplayName("เลขที่การขาย")]
         public int Order_Id { get; set; }
         [DisplayName("รหัสสินค้า")]
@@ -34,7 +35,7 @@ using System;
 
 
 
-    public virtual Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
     public virtual UserAccout UserAccout { get; set; }
 

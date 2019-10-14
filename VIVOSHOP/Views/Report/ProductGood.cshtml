@@ -57,6 +57,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductType.ProType_Name)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pro_Amout)
+            </th>
         </tr>
 
         @foreach (var item in Model)
@@ -83,6 +86,9 @@
         </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ProductType.ProType_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pro_Amout) ชิ้น
         </td>
     </tr>
         }

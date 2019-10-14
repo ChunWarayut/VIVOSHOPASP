@@ -22,11 +22,11 @@ namespace VIVOSHOP.Controllers
             var products = db.Products.Include(p => p.ProductType);
             if (keyword == null || keyword == " ")
             {
-                return View(products.ToList());
+                return View(products.OrderByDescending(x => x.Pro_Id).ToList());
             }
             else
             {
-                var c = products.Where(x => x.Pro_Name.Contains(keyword) || x.ProductType.ProType_Name.Contains(keyword)).ToList();  
+                var c = products.Where(x => x.Pro_Name.Contains(keyword) || x.ProductType.ProType_Name.Contains(keyword)).OrderByDescending(x => x.Pro_Id).ToList();  
                 return View(c);
             } 
         }

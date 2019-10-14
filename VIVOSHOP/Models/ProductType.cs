@@ -28,10 +28,12 @@ using System;
     }
 
 
+
         [DisplayName("รหัสประเภทสินค้า")]
         public int ProType_Id { get; set; }
         [DisplayName("ชื่อประเภทสินค้า")]
         public string ProType_Name { get; set; }
+
 
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

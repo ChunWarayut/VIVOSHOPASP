@@ -56,36 +56,58 @@ namespace VIVOSHOP.Controllers
             ViewBag.User_Id = new SelectList(db.UserAccouts, "User_Id", "User_Name");
             return View();
         }
-
-        // POST: ProductOrders/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel")] ProductOrder productOrder, string User_Address)
+        public ActionResult Create([Bind(Include = "Order_Id,User_Id,Order_Date,Order_Price,Order_Status,Order_Parcel,Order_Address")] ProductOrder productOrder, string User_Address)
         {
+
+            var user_II = int.Parse(Session["Id"].ToString());
+            var user_name = Session["User_Name"];
+            var test = productOrder;
+            productOrder.Order_Date = DateTime.Now;
+            var updateuser = db.UserAccouts.Where(x => x.User_Id == user_II).FirstOrDefault();
+
+
+
+            var add = User_Address;
+            var add2 = updateuser.User_Address;
+
+
             if (ModelState.IsValid)
             {
-                var user_II = int.Parse(Session["Id"].ToString());
-                var user_name =Session["User_Name"];
-                var test = productOrder;
-                productOrder.Order_Date = DateTime.Now;
-
-                productOrder.User_Id = user_II;
-                db.ProductOrders.Add(productOrder);
-                db.SaveChanges();
-                var update = db.OrderDetails.Where(x => x.ProOrderId == 0).ToList();
-                var ProID = db.ProductOrders.OrderByDescending(x => x.Order_Id).Select(x => x.Order_Id).FirstOrDefault();
-                if (update.Count() > 0)
-                {
-                    update.ForEach(x => { x.ProOrderId = ProID; }); 
-                    db.SaveChanges();
-                }
-                var updateuser = db.UserAccouts.Where(x => x.User_Id == user_II).ToList();
                 if (User_Address.Length > 0)
                 {
-                    updateuser.ForEach(x => { x.User_Address = User_Address; });
+                    productOrder.Order_Date = DateTime.Now;
+
+                    productOrder.User_Id = user_II;
+                    productOrder.Order_Address = User_Address;
+                    db.ProductOrders.Add(productOrder);
                     db.SaveChanges();
+                    var update = db.OrderDetails.Where(x => x.ProOrderId == 0).ToList();
+                    var ProID = db.ProductOrders.OrderByDescending(x => x.Order_Id).Select(x => x.Order_Id).FirstOrDefault();
+                    if (update.Count() > 0)
+                    {
+                        update.ForEach(x => { x.ProOrderId = ProID; });
+                        db.SaveChanges();
+                    }
+                    db.SaveChanges();
+                }
+                else
+                {
+                    productOrder.Order_Date = DateTime.Now;
+
+                    productOrder.Order_Address = updateuser.User_Address;
+                    productOrder.User_Id = user_II;
+                    db.ProductOrders.Add(productOrder);
+                    db.SaveChanges();
+                    var update = db.OrderDetails.Where(x => x.ProOrderId == 0).ToList();
+                    var ProID = db.ProductOrders.OrderByDescending(x => x.Order_Id).Select(x => x.Order_Id).FirstOrDefault();
+                    if (update.Count() > 0)
+                    {
+                        update.ForEach(x => { x.ProOrderId = ProID; });
+                        db.SaveChanges();
+                    }
+
                 }
                 return RedirectToAction("Index", "History");
             }

@@ -44,6 +44,9 @@ using System;
 
         public string Order_img { get; set; }
 
+        [DisplayName("ที่อยู่ที่จัดส่ง")]
+        public string Order_Address { get; set; }
+
 
 
     public virtual UserAccout UserAccout { get; set; }

@@ -49,7 +49,6 @@ using System;
         public string LoginErrorMessageTEL { get; set; }
         public string LoginErrorMessageEMAIL { get; set; }
 
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<ProductOrder> ProductOrders { get; set; }

@@ -77,14 +77,42 @@
         </div>
     </div>
 
+    <script>
+        
+        document.getElementById("User_Address").onload = function() {myFunction()};
 
-    <div class="form-group">
+
+        function myFunction() {
+        var val = document.getElementById("gender");
+            document.getElementById("User_Address").classList.add("mystyleadd")
+        console.log(val.value);
+        }
+        function myFunction2() {
+            var val = document.getElementById("gender2");
+            document.getElementById("User_Address").classList.remove("mystyleadd")
+        console.log(val.value);
+        }
+    </script>
+
+    <style>
+        .mystyleadd {
+            display: none;
+        }
+    </style>
+    <div class="form-group" onload="myFunction()">
         @Html.LabelFor(model => model.UserAccout.User_Address, "ที่อยู่ที่จัดส่ง", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="text" class="form-control" id="User_Address" name="User_Address" />
+            <input type="radio" checked id="gender" name="gender" onclick="myFunction()" value="old"> ที่อยู่เดิม
+            <input type="radio" id="gender2" name="gender" onclick="myFunction2()" value="new"> ที่อยู่ใหม่
+            <input type="text" class="form-control mystyleadd" id="User_Address" name="User_Address" />
             @Html.ValidationMessageFor(model => model.User_Id, "", new { @class = "text-danger" })
         </div>
     </div>
+
+        
+
+
+
 
 
     <div class="form-group">
